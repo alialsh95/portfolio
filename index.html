@@ -1,1 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Abdullah Al-Shahri | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    body {
+      background-color: #000000;
+      color: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px 16px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 520px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    /* كرت الصورة بدون قص */
+    .hero-image-card {
+      width: 100%;
+      border-radius: 24px;
+      overflow: hidden;
+      background-color: #111111;
+      border: 1px solid #222222;
+    }
+
+    .hero-image-card img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: contain;
+    }
+
+    /* البطاقات العامة */
+    .card {
+      background: #111111;
+      border-radius: 24px;
+      padding: 28px 24px;
+      border: 1px solid #222222;
+    }
+
+    h1 {
+      font-size: 28px;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 6px;
+      letter-spacing: -0.5px;
+    }
+
+    .subtitle {
+      font-size: 15px;
+      font-weight: 600;
+      color: #3b82f6;
+      margin-bottom: 20px;
+    }
+
+    .section-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .bio-text {
+      font-size: 14px;
+      line-height: 1.8;
+      color: #a1a1aa;
+    }
+
+    .divider {
+      height: 1px;
+      background: #222222;
+      margin: 24px 0;
+    }
+
+    /* قوائم النقاط والخبرات */
+    .experience-item {
+      margin-bottom: 20px;
+    }
+
+    .experience-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .exp-role {
+      font-size: 16px;
+      font-weight: 700;
+      color: #f4f4f5;
+    }
+
+    .exp-company {
+      font-size: 13px;
+      color: #71717a;
+      margin-bottom: 8px;
+    }
+
+    .exp-desc {
+      font-size: 14px;
+      color: #a1a1aa;
+      line-height: 1.6;
+    }
+
+    /* المهارات الكبسولات */
+    .skills-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .skill-tag {
+      background: #18181b;
+      border: 1px solid #27272a;
+      color: #d4d4d8;
+      padding: 8px 14px;
+      border-radius: 100px;
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    /* قسم التواصل بالأسفل */
+    .contact-section {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .contact-title {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #71717a;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px;
+      background: #18181b;
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      border-radius: 14px;
+      border: 1px solid #27272a;
+      transition: all 0.2s ease;
+    }
+
+    .contact-link:hover {
+      background: #27272a;
+      border-color: #3f3f46;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    
+    <!-- الصورة العلوية الكاملة -->
+    <div class="hero-image-card">
+      <img src="profile.jpg" alt="Abdullah Al-Shahri">
+    </div>
+
+    <!-- بطاقة المعلومات الرئيسية والنبذة -->
+    <div class="card">
+      <h1>Abdullah Al-Shahri</h1>
+      <p class="subtitle">Operations & Business Development Professional</p>
+      
+      <p class="bio-text">
+        Results-driven Operations & Business Development Professional with over 10 years of professional experience in the Eastern Province, Saudi Arabia. Specialized in strategic operational management, business growth, process optimization, and establishing high-value partnership relations.
+      </p>
+    </div>
+
+    <!-- بطاقة الخبرات المهنية -->
+    <div class="card">
+      <h2 class="section-title">Professional Experience</h2>
+      
+      <div class="experience-item">
+        <div class="exp-role">Operations & Business Development Manager</div>
+        <div class="exp-company">Eastern Province, Saudi Arabia • 10+ Years Experience</div>
+        <p class="exp-desc">
+          Led end-to-end operational workflows, optimized resource allocation, supervised cross-functional teams, and successfully developed business strategies to maximize revenue and market presence.
+        </p>
+      </div>
+
+      <div class="divider"></div>
+
+      <h2 class="section-title">Core Competencies</h2>
+      <div class="skills-wrapper">
+        <span class="skill-tag">Operations Management</span>
+        <span class="skill-tag">Business Development</span>
+        <span class="skill-tag">Strategic Planning</span>
+        <span class="skill-tag">Process Optimization</span>
+        <span class="skill-tag">Team Leadership</span>
+        <span class="skill-tag">Client Relations</span>
+      </div>
+    </div>
+
+    <!-- بطاقة التواصل أسفل الموقع -->
+    <div class="card">
+      <div class="contact-section">
+        <span class="contact-title">Contact & Profiles</span>
+        
+        <a href="tel:+966530586021" class="contact-link">
+          <span>Phone</span>
+          <span>+966 53 058 6021</span>
+        </a>
+
+        <a href="mailto:alialsh95@proton.me" class="contact-link">
+          <span>Email</span>
+          <span>alialsh95@proton.me</span>
+        </a>
+
+        <a href="https://linkedin.com" target="_blank" class="contact-link">
+          <span>LinkedIn</span>
+          <span>View Profile ↗</span>
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>
 
