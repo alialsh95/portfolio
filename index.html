@@ -1,1 +1,193 @@
+        <!-- Combined Career & Partnership Section -->
+        <section class="career-partnership-section" id="career-partnership">
+            <h2 class="section-title" data-en="Career & Partnership" data-ar="الشركاء والعملاء">Career & Partnership</h2>
+            <div class="clients-section" id="clientsSliderContainer">
+                <div class="clients-slider" id="clientsSlider">
+                    <div class="client-card"><img src="client1.jpg" alt="Client 1"></div>
+                    <div class="client-card"><img src="client2.jpg" alt="Client 2"></div>
+                    <div class="client-card"><img src="client3.jpg" alt="Client 3"></div>
+                    <div class="client-card"><img src="client4.jpg" alt="Client 4"></div>
+                    <div class="client-card"><img src="client5.jpg" alt="Client 5"></div>
+                    <div class="client-card"><img src="client6.jpg" alt="Client 6"></div>
+                    <div class="client-card"><img src="client7.jpg" alt="Client 7"></div>
+                    <div class="client-card"><img src="client8.jpg" alt="Client 8"></div>
+                    <div class="client-card"><img src="client9.jpg" alt="Client 9"></div>
+                    <div class="client-card"><img src="client10.jpg" alt="Client 10"></div>
+                    <div class="client-card"><img src="client11.jpg" alt="Client 11"></div>
+                    <div class="client-card"><img src="client12.jpg" alt="Client 12"></div>
+                    <!-- Duplicated for seamless infinite carousel loop -->
+                    <div class="client-card"><img src="client1.jpg" alt="Client 1"></div>
+                    <div class="client-card"><img src="client2.jpg" alt="Client 2"></div>
+                    <div class="client-card"><img src="client3.jpg" alt="Client 3"></div>
+                    <div class="client-card"><img src="client4.jpg" alt="Client 4"></div>
+                    <div class="client-card"><img src="client5.jpg" alt="Client 5"></div>
+                    <div class="client-card"><img src="client6.jpg" alt="Client 6"></div>
+                    <div class="client-card"><img src="client7.jpg" alt="Client 7"></div>
+                    <div class="client-card"><img src="client8.jpg" alt="Client 8"></div>
+                    <div class="client-card"><img src="client9.jpg" alt="Client 9"></div>
+                    <div class="client-card"><img src="client10.jpg" alt="Client 10"></div>
+                    <div class="client-card"><img src="client11.jpg" alt="Client 11"></div>
+                    <div class="client-card"><img src="client12.jpg" alt="Client 12"></div>
+                </div>
+            </div>
+        </section>
+
+    <style>
+        .career-partnership-section {
+            margin: 100px 0;
+        }
+
+        .clients-section {
+            margin-top: 40px;
+            overflow: hidden;
+            position: relative;
+            cursor: grab;
+            padding: 15px 0;
+            width: 100%;
+            user-select: none;
+        }
+
+        .clients-section:active {
+            cursor: grabbing;
+        }
+
+        .clients-slider {
+            display: flex;
+            gap: 24px;
+            width: max-content;
+            animation: scrollMarquee 45s linear infinite;
+            will-change: transform;
+        }
+
+        .clients-slider:hover {
+            animation-play-state: paused;
+        }
+
+        /* Identical luxury card styling with strict dimensions and perfect centering */
+        .client-card {
+            width: 190px;
+            height: 110px;
+            background: rgba(255, 255, 255, 0.025);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s ease, background 0.35s ease, box-shadow 0.35s ease;
+            flex-shrink: 0;
+            padding: 16px;
+            position: relative;
+        }
+
+        .client-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at center, rgba(212, 175, 55, 0.06) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.35s ease;
+        }
+
+        .client-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(212, 175, 55, 0.45);
+            background: rgba(255, 255, 255, 0.04);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 15px rgba(212, 175, 55, 0.12);
+        }
+
+        .client-card:hover::before {
+            opacity: 1;
+        }
+
+        .client-card img {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            object-position: center;
+            filter: drop-shadow(0 2px 5px rgba(0,0,0,0.4));
+            opacity: 0.92;
+            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
+            display: block;
+        }
+
+        .client-card:hover img {
+            transform: scale(1.06);
+            opacity: 1;
+        }
+
+        @keyframes scrollMarquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-190px * 12 - 24px * 12)); }
+        }
+
+        @keyframes scrollMarqueeMobile {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-160px * 12 - 20px * 12)); }
+        }
+
+        @media (max-width: 768px) {
+            .client-card {
+                width: 160px;
+                height: 95px;
+                padding: 12px;
+                border-radius: 12px;
+            }
+            .clients-slider {
+                gap: 20px;
+                animation: scrollMarqueeMobile 40s linear infinite;
+            }
+        }
+    </style>
+
+    <script>
+        // Professional Ultra-Smooth Drag / Touch Swipe Carousel Interactivity
+        const sliderContainer = document.getElementById('clientsSliderContainer');
+        const slider = document.getElementById('clientsSlider');
+        
+        let isDragging = false;
+        let startPosX = 0;
+        let currentTranslate = 0;
+        let prevTranslate = 0;
+        let animationFrameId;
+
+        function getPositionX(event) {
+            return event.type.includes('mouse') ? event.pageX : event.touches[0].clientX;
+        }
+
+        function touchStart(event) {
+            isDragging = true;
+            startPosX = getPositionX(event);
+            slider.style.animationPlayState = 'paused';
+            slider.style.transition = 'none';
+        }
+
+        function touchMove(event) {
+            if (!isDragging) return;
+            const currentPosition = getPositionX(event);
+            const diff = currentPosition - startPosX;
+            // Temporarily adjust container scroll position for smooth manual dragging
+            sliderContainer.scrollLeft -= diff;
+            startPosX = currentPosition;
+        }
+
+        function touchEnd() {
+            if (!isDragging) return;
+            isDragging = false;
+            slider.style.animationPlayState = 'running';
+        }
+
+        // Mouse Events
+        sliderContainer.addEventListener('mousedown', touchStart);
+        sliderContainer.addEventListener('mousemove', touchMove);
+        sliderContainer.addEventListener('mouseup', touchEnd);
+        sliderContainer.addEventListener('mouseleave', touchEnd);
+
+        // Touch Events for Mobile
+        sliderContainer.addEventListener('touchstart', touchStart, { passive: true });
+        sliderContainer.addEventListener('touchmove', touchMove, { passive: true });
+        sliderContainer.addEventListener('touchend', touchEnd);
+    </script>
 
