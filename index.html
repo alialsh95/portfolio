@@ -1,1 +1,505 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abdullah Al-Shahri | Operations & Business Development Professional</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #030303;
+            color: #e5e5e5;
+            overflow-x: hidden;
+            line-height: 1.8;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(20, 20, 20, 0.8) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(30, 25, 20, 0.6) 0%, transparent 40%),
+                radial-gradient(circle at 50% 50%, rgba(15, 15, 15, 0.9) 0%, transparent 60%),
+                linear-gradient(135deg, #050505 0%, #0a0a0c 50%, #020203 100%);
+            background-size: cover;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .hero-banner {
+            width: 100%;
+            height: 65vh;
+            min-height: 450px;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 60px;
+        }
+
+        .hero-banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            display: block;
+            filter: brightness(0.9);
+        }
+
+        .hero-banner::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 150px;
+            background: linear-gradient(to top, #030303, transparent);
+        }
+
+        .hero-title-area {
+            text-align: center;
+            margin-top: -80px;
+            position: relative;
+            z-index: 2;
+            padding: 0 20px;
+        }
+
+        .hero-title-area h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-title-area p.title-role {
+            font-size: 1.25rem;
+            color: #a3a3a3;
+            font-weight: 400;
+        }
+
+        .section-bio {
+            margin: 80px 0;
+            font-size: 1.15rem;
+            color: #cccccc;
+            text-align: justify;
+            line-height: 2.1;
+            padding: 0 10px;
+        }
+
+        .section-title {
+            font-size: 1.6rem;
+            color: #ffffff;
+            margin-bottom: 40px;
+            font-weight: 600;
+            letter-spacing: -0.3px;
+            border-left: 3px solid #d4af37;
+            padding-left: 15px;
+        }
+
+        .timeline-section {
+            margin: 100px 0;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 5px;
+            left: 6px;
+            width: 2px;
+            height: 100%;
+            background: rgba(212, 175, 55, 0.2);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 50px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            top: 6px;
+            left: -30px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: #030303;
+            border: 2px solid #d4af37;
+        }
+
+        .timeline-content h3 {
+            font-size: 1.2rem;
+            color: #ffffff;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .timeline-content .company-date {
+            font-size: 0.95rem;
+            color: #d4af37;
+            margin-bottom: 16px;
+            font-weight: 500;
+        }
+
+        .timeline-content ul {
+            list-style-type: none;
+        }
+
+        .timeline-content ul li {
+            position: relative;
+            padding-left: 18px;
+            margin-bottom: 10px;
+            color: #b0b0b0;
+            font-size: 1rem;
+        }
+
+        .timeline-content ul li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #d4af37;
+            font-weight: bold;
+        }
+
+        .skills-section {
+            margin: 100px 0;
+        }
+
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-badge {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            color: #d1d1d1;
+            transition: all 0.3s ease;
+        }
+
+        .skill-badge:hover {
+            border-color: #d4af37;
+            color: #ffffff;
+            background: rgba(212, 175, 55, 0.05);
+        }
+
+        .clients-section {
+            margin: 100px 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .clients-slider {
+            display: flex;
+            gap: 30px;
+            width: max-content;
+            animation: scrollMarquee 35s linear infinite;
+        }
+
+        .clients-slider:hover {
+            animation-play-state: paused;
+        }
+
+        .client-card {
+            width: 160px;
+            height: 90px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .client-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(212, 175, 55, 0.4);
+        }
+
+        .client-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%) opacity(0.7);
+            transition: filter 0.3s ease;
+        }
+
+        .client-card:hover img {
+            filter: grayscale(0%) opacity(1);
+        }
+
+        @keyframes scrollMarquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-160px * 6 - 30px * 6)); }
+        }
+
+        .volunteer-section {
+            margin: 100px 0;
+        }
+
+        .volunteer-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            padding: 30px;
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .volunteer-logo {
+            width: 90px;
+            height: 90px;
+            border-radius: 12px;
+            overflow: hidden;
+            flex-shrink: 0;
+            background: #111;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .volunteer-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .volunteer-info h3 {
+            font-size: 1.25rem;
+            color: #ffffff;
+            margin-bottom: 4px;
+        }
+
+        .volunteer-info .vol-date {
+            font-size: 0.9rem;
+            color: #d4af37;
+            margin-bottom: 12px;
+        }
+
+        .volunteer-info p {
+            color: #b0b0b0;
+            font-size: 0.95rem;
+        }
+
+        .contact-section {
+            margin: 120px 0 80px 0;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            padding-top: 80px;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .contact-link {
+            color: #cccccc;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 400;
+            position: relative;
+            padding-bottom: 4px;
+            transition: color 0.3s ease;
+        }
+
+        .contact-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: #d4af37;
+            transition: width 0.3s ease;
+        }
+
+        .contact-link:hover {
+            color: #ffffff;
+        }
+
+        .contact-link:hover::after {
+            width: 100%;
+        }
+
+        @keyframes scrollMarqueeMobile {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-140px * 6 - 20px * 6)); }
+        }
+
+        @media (max-width: 768px) {
+            .hero-banner { height: 50vh; min-height: 350px; }
+            .hero-title-area h1 { font-size: 2rem; }
+            .volunteer-card { flex-direction: column; text-align: center; }
+            .contact-links { flex-direction: column; gap: 20px; }
+            .clients-slider { animation: scrollMarqueeMobile 30s linear infinite; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="hero-banner">
+        <img src="profile.jpg" alt="Abdullah Al-Shahri">
+    </header>
+
+    <div class="hero-title-area">
+        <h1>Abdullah Al-Shahri</h1>
+        <p class="title-role">Operations & Business Development Professional</p>
+    </div>
+
+    <div class="container">
+
+        <section class="section-bio">
+            <p>Operations and Business Development professional with over 10 years of experience in hospitality, customer service, marketing, and project management. Experienced in operations management, hospitality operations, procurement, supplier management, contract administration, process improvement, marketing support, and team leadership. Skilled in establishing business operations, building strategic relationships, improving operational efficiency, supporting business growth, and enhancing customer experience while maintaining high service standards[span_0](start_span)[span_0](end_span).</p>
+        </section>
+
+        <section class="timeline-section">
+            <h2 class="section-title">Professional Experience</h2>
+            <div class="timeline">
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Operations & Business Development Manager</h3>
+                        <div class="company-date">Private Organization | 2023 - Present[span_1](start_span)[span_1](end_span)</div>
+                        <ul>
+                            <li>Led the establishment of business operations by developing operational procedures, workflows, and administrative processes[span_2](start_span)[span_2](end_span).</li>
+                            <li>Built relationships with investors and strategic partners to support business growth and expansion[span_3](start_span)[span_3](end_span).</li>
+                            <li>Successfully generated over SAR 2 million in sales during 2023 while operating the business with a team of fewer than 8 employees[span_4](start_span)[span_4](end_span).</li>
+                            <li>Increased annual sales to over SAR 4 million in 2024 by retaining existing clients, expanding customer relationships, and securing new business opportunities[span_5](start_span)[span_5](end_span).</li>
+                            <li>Led the launch and operational setup of a new restaurant in 2026, overseeing planning, execution, and operational readiness[span_6](start_span)[span_6](end_span).</li>
+                            <li>Managed procurement, supplier management, purchasing activities, contract administration, and operational cost control[span_7](start_span)[span_7](end_span).</li>
+                            <li>Recruited, trained, and supervised employees while leading daily operations, team performance, and process improvements[span_8](start_span)[span_8](end_span).</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Marketing Officer & Projects Supervisor</h3>
+                        <div class="company-date">Zabarjad | Jun 2018 - Sep 2022[span_9](start_span)[span_9](end_span)</div>
+                        <ul>
+                            <li>Secured new business opportunities through client acquisition and commercial negotiations[span_10](start_span)[span_10](end_span).</li>
+                            <li>Managed catering and hospitality projects from contract award through successful execution[span_11](start_span)[span_11](end_span).</li>
+                            <li>Planned and executed marketing initiatives, establishing and leading a digital marketing team that secured 6 commercial contracts for multiple clients[span_12](start_span)[span_12](end_span).</li>
+                            <li>Oversaw procurement, budgeting, supplier management, and operational cost control[span_13](start_span)[span_13](end_span).</li>
+                            <li>Managed recruitment, onboarding, attendance tracking, payroll coordination, and performance monitoring[span_14](start_span)[span_14](end_span).</li>
+                            <li>Restructured the workforce to improve operational efficiency while maintaining service quality and supporting continued sales growth[span_15](start_span)[span_15](end_span).</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Customer Service Representative</h3>
+                        <div class="company-date">Al Zamil Maintenance Company | 2015[span_16](start_span)[span_16](end_span)</div>
+                        <ul>
+                            <li>Handled customer inquiries, requests, and complaints professionally[span_17](start_span)[span_17](end_span).</li>
+                            <li>Coordinated with operational teams to ensure timely service delivery and high customer satisfaction[span_18](start_span)[span_18](end_span).</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="skills-section">
+            <h2 class="section-title">Core & Technical Skills</h2>
+            <div class="skills-container">
+                <span class="skill-badge">Operations Management</span>
+                <span class="skill-badge">Hospitality Operations</span>
+                <span class="skill-badge">Business Development</span>
+                <span class="skill-badge">Project Management</span>
+                <span class="skill-badge">Procurement</span>
+                <span class="skill-badge">Supplier Management</span>
+                <span class="skill-badge">Contract Management</span>
+                <span class="skill-badge">Budget & Cost Control</span>
+                <span class="skill-badge">Process Improvement</span>
+                <span class="skill-badge">Commercial Negotiation</span>
+                <span class="skill-badge">Stakeholder Management</span>
+                <span class="skill-badge">Team Leadership</span>
+                <span class="skill-badge">Advanced Microsoft Excel</span>
+                <span class="skill-badge">Data Analysis & Reporting</span>
+                <span class="skill-badge">Adobe Creative Cloud</span>
+            </div>
+        </section>
+
+        <section class="clients-section">
+            <h2 class="section-title">Clients & Partnerships</h2>
+            <div class="clients-slider">
+                <div class="client-card"><img src="client1.jpg" alt="Client 1"></div>
+                <div class="client-card"><img src="client2.jpg" alt="Client 2"></div>
+                <div class="client-card"><img src="client3.jpg" alt="Client 3"></div>
+                <div class="client-card"><img src="client4.jpg" alt="Client 4"></div>
+                <div class="client-card"><img src="client5.jpg" alt="Client 5"></div>
+                <div class="client-card"><img src="client6.jpg" alt="Client 6"></div>
+                <div class="client-card"><img src="client7.jpg" alt="Client 7"></div>
+                <div class="client-card"><img src="client8.jpg" alt="Client 8"></div>
+                <div class="client-card"><img src="client9.jpg" alt="Client 9"></div>
+                <div class="client-card"><img src="client10.jpg" alt="Client 10"></div>
+                <div class="client-card"><img src="client11.jpg" alt="Client 11"></div>
+                <div class="client-card"><img src="client12.jpg" alt="Client 12"></div>
+                <div class="client-card"><img src="client1.jpg" alt="Client 1"></div>
+                <div class="client-card"><img src="client2.jpg" alt="Client 2"></div>
+                <div class="client-card"><img src="client3.jpg" alt="Client 3"></div>
+                <div class="client-card"><img src="client4.jpg" alt="Client 4"></div>
+                <div class="client-card"><img src="client5.jpg" alt="Client 5"></div>
+                <div class="client-card"><img src="client6.jpg" alt="Client 6"></div>
+            </div>
+        </section>
+
+        <section class="volunteer-section">
+            <h2 class="section-title">Volunteer Work</h2>
+            <div class="volunteer-card">
+                <div class="volunteer-logo">
+                    <img src="volunteer.jpg" alt="SEEN Endowment">
+                </div>
+                <div class="volunteer-info">
+                    <h3>SEEN Endowment</h3>
+                    <div class="vol-date">Jan 1, 2019 – Feb 3, 2021</div>
+                    <p>Contributed to graphic design marketing campaigns and content creation to support the team’s goals and increase audience engagement.</p>
+                </div>
+            </div>
+        </section>
+
+        <footer class="contact-section">
+            <h2 class="section-title" style="border: none; text-align: center; padding: 0;">Get in Touch</h2>
+            <div class="contact-links">
+                <a href="tel:+966530586021" class="contact-link">+966 53 058 6021[span_19](start_span)[span_19](end_span)</a>
+                <a href="mailto:alialsh95@proton.me" class="contact-link">alialsh95@proton.me[span_20](start_span)[span_20](end_span)</a>
+                <a href="https://linkedin.com/in/alialsh95" target="_blank" class="contact-link">linkedin.com/in/alialsh95[span_21](start_span)[span_21](end_span)</a>
+            </div>
+        </footer>
+
+    </div>
+
+</body>
+</html>
 
