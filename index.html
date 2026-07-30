@@ -1,1 +1,421 @@
+أبشر من عيوني! تفضل الكود كاملاً باللغة الإنجليزية، انسخه بالكامل وضعْه في ملف index.html:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abdullah Al-Shahri | Operations & Business Development</title>
+    <style>
+        :root {
+            --primary-color: #0f172a;
+            --accent-color: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-color: #334155;
+            --heading-color: #0f172a;
+            --border-color: #e2e8f0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        header {
+            background-color: var(--card-bg);
+            padding: 40px 20px;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            margin-bottom: 25px;
+        }
+
+        .profile-img {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+            border: 3px solid var(--accent-color);
+            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2);
+        }
+
+        header h1 {
+            color: var(--heading-color);
+            font-size: 2.2rem;
+            margin-bottom: 6px;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            color: var(--accent-color);
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .contact-info a {
+            color: var(--text-color);
+            text-decoration: none;
+            background: var(--bg-color);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            background: var(--accent-color);
+            color: white;
+            border-color: var(--accent-color);
+        }
+
+        section {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            margin-bottom: 25px;
+        }
+
+        section h2 {
+            color: var(--heading-color);
+            border-bottom: 2px solid var(--bg-color);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 1.4rem;
+        }
+
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 15px;
+        }
+
+        .highlight-card {
+            background: #f1f5f9;
+            padding: 18px;
+            border-radius: 12px;
+            border-left: 4px solid var(--accent-color);
+        }
+
+        .highlight-card h3 {
+            font-size: 1.1rem;
+            color: var(--heading-color);
+            margin-bottom: 5px;
+        }
+
+        .job-item {
+            margin-bottom: 20px;
+        }
+
+        .job-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            margin-bottom: 8px;
+        }
+
+        .job-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--heading-color);
+        }
+
+        .job-company {
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+
+        .job-date {
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 6px;
+        }
+
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-badge {
+            background: #e0e7ff;
+            color: #3730a3;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .partnerships-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 15px;
+        }
+
+        .partner-card {
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 15px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 90px;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .partner-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--accent-color);
+        }
+
+        .partner-logo {
+            max-width: 110px;
+            max-height: 50px;
+            object-fit: contain;
+            margin-bottom: 8px;
+        }
+
+        .partner-name {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--heading-color);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #64748b;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Header / Profile Section -->
+        <header>
+            <img src="profile.jpg" alt="Abdullah Al-Shahri" class="profile-img" onerror="this.style.display='none'">
+            <h1>Abdullah Al-Shahri</h1>
+            <p>Operations & Business Development Professional</p>
+            
+            <div class="contact-info">
+                <a href="tel:+966530586021">📱 +966 53 058 6021</a>
+                <a href="mailto:alialsh95@proton.me">✉️ alialsh95@proton.me</a>
+                <a href="https://linkedin.com/in/alialsh95" target="_blank">🔗 LinkedIn Profile</a>
+            </div>
+        </header>
+
+        <!-- Professional Profile -->
+        <section>
+            <h2>Professional Profile</h2>
+            <p>Results-driven Operations & Business Development Professional with over 10 years of experience in managing operations, procurement, strategic partnerships, and driving revenue growth. Proven track record in establishing operational workflows, leading cross-functional teams, and building long-term corporate relationships across major listed and private enterprises in the Eastern Province, Saudi Arabia.</p>
+        </section>
+
+        <!-- Key Achievements -->
+        <section>
+            <h2>Key Achievements</h2>
+            <div class="highlights-grid">
+                <div class="highlight-card">
+                    <h3>SAR 4M+ Sales Target</h3>
+                    <p>Scaled annual revenue from SAR 2M in 2023 to over SAR 4M in 2024 through client retention and business expansion.</p>
+                </div>
+                <div class="highlight-card">
+                    <h3>Operational Setup</h3>
+                    <p>Established full operational frameworks, SOPs, and administrative workflows for corporate operations.</p>
+                </div>
+                <div class="highlight-card">
+                    <h3>New Launch Leadership</h3>
+                    <p>Led the planning, setup, and full operational launch of a new business venture in 2026.</p>
+                </div>
+                <div class="highlight-card">
+                    <h3>Commercial Contracts</h3>
+                    <p>Built a digital marketing team and secured 6 major commercial contracts across various clients.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section>
+            <h2>Professional Experience</h2>
+            
+            <div class="job-item">
+                <div class="job-header">
+                    <div>
+                        <span class="job-title">Operations & Business Development Manager</span>
+                        <span class="job-company"> | Private Organization</span>
+                    </div>
+                    <span class="job-date">2023 – Present</span>
+                </div>
+                <ul>
+                    <li>Established business operations by developing operational procedures, workflows, and administrative processes.</li>
+                    <li>Built strategic relationships with investors and key corporate partners to expand business footprint.</li>
+                    <li>Generated SAR 2M+ sales in 2023 with a small team, and increased annual sales to SAR 4M+ in 2024.</li>
+                    <li>Led the launch and operational setup of a new restaurant project in 2026.</li>
+                    <li>Managed procurement, supplier relations, purchasing activities, and operational cost control.</li>
+                </ul>
+            </div>
+
+            <hr style="margin: 20px 0; border: none; border-top: 1px solid var(--border-color);">
+
+            <div class="job-item">
+                <div class="job-header">
+                    <div>
+                        <span class="job-title">Marketing Officer & Projects Supervisor</span>
+                        <span class="job-company"> | Zabarjad</span>
+                    </div>
+                    <span class="job-date">Jun 2018 – Sep 2022</span>
+                </div>
+                <ul>
+                    <li>Secured commercial opportunities through B2B client acquisition and negotiations.</li>
+                    <li>Managed catering and hospitality projects from contract signing through execution.</li>
+                    <li>Established a digital marketing team and secured 6 commercial contracts.</li>
+                    <li>Restructured workforce operations to boost efficiency while maintaining service quality.</li>
+                </ul>
+            </div>
+
+            <hr style="margin: 20px 0; border: none; border-top: 1px solid var(--border-color);">
+
+            <div class="job-item">
+                <div class="job-header">
+                    <div>
+                        <span class="job-title">Customer Service Representative</span>
+                        <span class="job-company"> | Al Zamil Maintenance Company</span>
+                    </div>
+                    <span class="job-date">2015</span>
+                </div>
+                <ul>
+                    <li>Handled customer inquiries, complaints, and coordinated with operational teams to ensure service delivery.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Core Competencies -->
+        <section>
+            <h2>Core Competencies</h2>
+            <div class="skills-container">
+                <span class="skill-badge">Operations Management</span>
+                <span class="skill-badge">Business Development</span>
+                <span class="skill-badge">Project Management</span>
+                <span class="skill-badge">Procurement & Supplier Management</span>
+                <span class="skill-badge">Contract Administration</span>
+                <span class="skill-badge">Cost Control & Budgeting</span>
+                <span class="skill-badge">Commercial Negotiation</span>
+                <span class="skill-badge">Team Leadership</span>
+            </div>
+        </section>
+
+        <!-- Key Partnerships & Clients Section -->
+        <section>
+            <h2>Key Partnerships & Clients</h2>
+            <div class="partnerships-grid">
+                
+                <div class="partner-card">
+                    <img src="sumou.png" alt="Sumou Real Estate" class="partner-logo" onerror="this.style.display='none'">
+                    <div class="partner-name">Sumou Real Estate</div>
+                </div>
+
+                <div class="partner-card">
+                    <img src="sal.png" alt="SAL Logistics" class="partner-logo" onerror="this.style.display='none'">
+                    <div class="partner-name">SAL Logistics</div>
+                </div>
+
+                <div class="partner-card">
+                    <img src="armed-forces.png" alt="Saudi Armed Forces" class="partner-logo" onerror="this.style.display='none'">
+                    <div class="partner-name">Saudi Armed Forces</div>
+                </div>
+
+                <div class="partner-card">
+                    <img src="alyaum.png" alt="Alyaum Newspaper" class="partner-logo" onerror="this.style.display='none'">
+                    <div class="partner-name">Alyaum Newspaper</div>
+                </div>
+
+                <div class="partner-card">
+                    <img src="fedex.png" alt="FedEx" class="partner-logo" onerror="this.style.display='none'">
+                    <div class="partner-name">FedEx</div>
+                </div>
+
+                <div class="partner-card">
+                    <img src="ghiras.png" alt="Ghiras Association" class="partner-logo" onerror="this.style.display='none'">
+                    <div class="partner-name">Ghiras Association</div>
+                </div>
+
+                <div class="partner-card">
+                    <img src="nma.png" alt="NMA" class="partner-logo" onerror="this.style.display='none'">
+                    <div class="partner-name">NMA</div>
+                </div>
+
+                <div class="partner-card">
+                    <img src="quraishi.png" alt="Ali Zaid Al Quraishi & Brothers" class="partner-logo" onerror="this.style.display='none'">
+                    <div class="partner-name">Ali Zaid Al Quraishi & Brothers</div>
+                </div>
+
+                <div class="partner-card">
+                    <img src="binladin.png" alt="Saudi Binladin Group" class="partner-logo" onerror="this.style.display='none'">
+                    <div class="partner-name">Saudi Binladin Group</div>
+                </div>
+
+                <div class="partner-card">
+                    <img src="spl.png" alt="Saudi Post (SPL)" class="partner-logo" onerror="this.style.display='none'">
+                    <div class="partner-name">Saudi Post (SPL)</div>
+                </div>
+
+                <div class="partner-card">
+                    <img src="offers-markets.png" alt="Offers Markets" class="partner-logo" onerror="this.style.display='none'">
+                    <div class="partner-name">Offers Markets</div>
+                </div>
+
+                <div class="partner-card">
+                    <img src="centrepoint.png" alt="Centrepoint" class="partner-logo" onerror="this.style.display='none'">
+                    <div class="partner-name">Centrepoint</div>
+                </div>
+
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Abdullah Al-Shahri. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
+
 
