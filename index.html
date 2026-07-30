@@ -1,1 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Abdullah Al-Shahri</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    body {
+      background-color: #000000;
+      color: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 16px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 500px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    /* كرت الصورة - بعرض الصفحة كاملة */
+    .hero-image-card {
+      width: 100%;
+      border-radius: 24px;
+      overflow: hidden;
+      background-color: #111111;
+      border: 1px solid #222222;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+    }
+
+    .hero-image-card img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+
+    /* كرت المحتوى */
+    .content-card {
+      background: #111111;
+      border-radius: 24px;
+      padding: 28px 24px;
+      border: 1px solid #222222;
+    }
+
+    h1 {
+      font-size: 28px;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 8px;
+      letter-spacing: -0.5px;
+    }
+
+    .subtitle {
+      font-size: 15px;
+      font-weight: 600;
+      color: #3b82f6;
+      margin-bottom: 20px;
+      line-height: 1.4;
+    }
+
+    .bio-text {
+      font-size: 14px;
+      line-height: 1.7;
+      color: #a1a1aa;
+      margin-bottom: 32px;
+    }
+
+    .divider {
+      height: 1px;
+      background: #222222;
+      margin-bottom: 24px;
+    }
+
+    /* قسم التواصل أسفل الصفحة بدون أيقونات */
+    .contact-section {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .contact-title {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #71717a;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px;
+      background: #18181b;
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      border-radius: 14px;
+      border: 1px solid #27272a;
+      transition: all 0.2s ease;
+    }
+
+    .contact-link:hover {
+      background: #27272a;
+      border-color: #3f3f46;
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    
+    <!-- الصورة بعرض الصفحة وباسم profile.jpg -->
+    <div class="hero-image-card">
+      <img src="profile.jpg" alt="Abdullah Al-Shahri">
+    </div>
+
+    <!-- التفاصيل والنص -->
+    <div class="content-card">
+      <h1>Abdullah Al-Shahri</h1>
+      <p class="subtitle">Operations & Business Development Professional</p>
+
+      <p class="bio-text">
+        Results-driven Operations & Business Development Professional with over 10 years of experience in managing operations, strategic partnerships, and driving business growth.
+      </p>
+
+      <div class="divider"></div>
+
+      <!-- التواصل أسفل الصفحة بأسلوب أزرار نظيفة بدون أيقونات -->
+      <div class="contact-section">
+        <span class="contact-title">Contact & Profiles</span>
+        
+        <a href="tel:+966530586021" class="contact-link">
+          <span>Phone</span>
+          <span>+966 53 058 6021</span>
+        </a>
+
+        <a href="mailto:alialsh95@proton.me" class="contact-link">
+          <span>Email</span>
+          <span>alialsh95@proton.me</span>
+        </a>
+
+        <a href="https://linkedin.com" target="_blank" class="contact-link">
+          <span>LinkedIn</span>
+          <span>View Profile ↗</span>
+        </a>
+      </div>
+
+    </div>
+
+  </div>
+
+</body>
+</html>
 
