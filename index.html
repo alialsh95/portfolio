@@ -1,1 +1,1047 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" id="htmlRoot">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-en="Abdullah Al-Shahri | Operations & Business Development Professional" data-ar="عبدالله الشهري | أخصائي العمليات وتطوير الأعمال">Abdullah Al-Shahri | Operations & Business Development Professional</title>
+    <!-- FontAwesome for Golden Contact Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #030303;
+            color: #e5e5e5;
+            overflow-x: hidden;
+            line-height: 1.8;
+            position: relative;
+        }
+
+        /* Canvas Animated Background */
+        #bgCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            pointer-events: none;
+            background: #030303;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Top Bar Controls (Language Switcher & Menu Toggle) */
+        .top-controls {
+            position: fixed;
+            top: 20px;
+            right: 24px;
+            z-index: 1001;
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        html[dir="rtl"] .top-controls {
+            right: auto;
+            left: 24px;
+        }
+
+        .control-btn {
+            background: rgba(15, 15, 15, 0.85);
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            color: #d4af37;
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            backdrop-filter: blur(12px);
+            transition: all 0.3s ease;
+        }
+
+        .control-btn:hover {
+            background: rgba(212, 175, 55, 0.2);
+            border-color: #d4af37;
+            color: #ffffff;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.25);
+        }
+
+        /* Side Menu (Left Side) */
+        .side-menu {
+            position: fixed;
+            top: 0;
+            left: -300px;
+            width: 280px;
+            height: 100vh;
+            background: rgba(10, 10, 12, 0.96);
+            backdrop-filter: blur(20px);
+            border-right: 1px solid rgba(212, 175, 55, 0.2);
+            z-index: 1000;
+            transition: left 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+            padding: 80px 24px 40px 24px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 10px 0 30px rgba(0,0,0,0.6);
+        }
+
+        html[dir="rtl"] .side-menu {
+            left: auto;
+            right: -300px;
+            border-right: none;
+            border-left: 1px solid rgba(212, 175, 55, 0.2);
+            box-shadow: -10px 0 30px rgba(0,0,0,0.6);
+            transition: right 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+
+        .side-menu.open {
+            left: 0;
+        }
+
+        html[dir="rtl"] .side-menu.open {
+            right: 0;
+        }
+
+        .side-menu ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .side-menu ul li a {
+            color: #b0b0b0;
+            text-decoration: none;
+            font-size: 1.05rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: block;
+            padding: 6px 0;
+        }
+
+        .side-menu ul li a:hover {
+            color: #d4af37;
+            transform: translateX(5px);
+        }
+
+        html[dir="rtl"] .side-menu ul li a:hover {
+            transform: translateX(-5px);
+        }
+
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Hero Banner Image Display */
+        .hero-banner {
+            width: 100%;
+            height: 70vh;
+            min-height: 500px;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 40px;
+            background-color: transparent;
+        }
+
+        .hero-banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center center;
+            display: block;
+            filter: brightness(0.98);
+            -webkit-mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 85%);
+            mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 85%);
+        }
+
+        .hero-banner::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 180px;
+            background: linear-gradient(to top, #030303 0%, rgba(3,3,3,0.85) 50%, transparent 100%);
+        }
+
+        /* Profile Images Slideshow Enhancements */
+        .hero-banner {
+            position: relative;
+        }
+
+        .profile-slideshow-container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .profile-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transform: scale(1.02);
+            transition: opacity 2s cubic-bezier(0.4, 0, 0.2, 1), transform 2s cubic-bezier(0.4, 0, 0.2, 1);
+            pointer-events: none;
+        }
+
+        .profile-slide.active {
+            opacity: 1;
+            transform: scale(1);
+            pointer-events: auto;
+        }
+
+        .profile-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center center;
+            display: block;
+            filter: brightness(0.98);
+            -webkit-mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 85%);
+            mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 85%);
+        }
+
+        /* Refined Executive Name & Title Styling */
+        .hero-title-area {
+            text-align: center;
+            margin-top: -20px;
+            position: relative;
+            z-index: 2;
+            padding: 0 20px;
+            margin-bottom: 50px;
+        }
+
+        .hero-title-area h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.8);
+        }
+
+        .hero-title-area p.title-role {
+            font-size: 1.35rem;
+            color: #d4af37;
+            font-weight: 500;
+            letter-spacing: 0.8px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.6);
+        }
+
+        .about-section {
+            margin: 60px 0;
+        }
+
+        .section-bio {
+            margin-top: 40px;
+            font-size: 1.15rem;
+            color: #cccccc;
+            text-align: left;
+            line-height: 1.9;
+            padding: 0 10px;
+        }
+
+        html[dir="rtl"] .section-bio {
+            text-align: right;
+        }
+
+        .section-title {
+            font-size: 1.6rem;
+            color: #ffffff;
+            margin-bottom: 40px;
+            font-weight: 600;
+            letter-spacing: -0.3px;
+            border-left: 3px solid #d4af37;
+            padding-left: 15px;
+        }
+
+        html[dir="rtl"] .section-title {
+            border-left: none;
+            border-right: 3px solid #d4af37;
+            padding-left: 0;
+            padding-right: 15px;
+        }
+
+        .timeline-section {
+            margin: 100px 0;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+
+        html[dir="rtl"] .timeline {
+            padding-left: 0;
+            padding-right: 30px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 5px;
+            left: 6px;
+            width: 2px;
+            height: 100%;
+            background: rgba(212, 175, 55, 0.3);
+        }
+
+        html[dir="rtl"] .timeline::before {
+            left: auto;
+            right: 6px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 50px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            top: 6px;
+            left: -30px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: #030303;
+            border: 2px solid #d4af37;
+        }
+
+        html[dir="rtl"] .timeline-item::before {
+            left: auto;
+            right: -30px;
+        }
+
+        .timeline-content h3 {
+            font-size: 1.2rem;
+            color: #ffffff;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .timeline-content .company-date {
+            font-size: 0.95rem;
+            color: #d4af37;
+            margin-bottom: 16px;
+            font-weight: 500;
+        }
+
+        .timeline-content ul {
+            list-style-type: none;
+        }
+
+        .timeline-content ul li {
+            position: relative;
+            padding-left: 18px;
+            margin-bottom: 10px;
+            color: #b0b0b0;
+            font-size: 1rem;
+            text-align: left;
+        }
+
+        html[dir="rtl"] .timeline-content ul li {
+            padding-left: 0;
+            padding-right: 18px;
+            text-align: right;
+        }
+
+        .timeline-content ul li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #d4af37;
+            font-weight: bold;
+        }
+
+        html[dir="rtl"] .timeline-content ul li::before {
+            left: auto;
+            right: 0;
+        }
+
+        .skills-section {
+            margin: 100px 0;
+        }
+
+        /* تنسيق محسن ومنتظم بالكامل لقسم المهارات لتجنب التعرج أو خروج العناصر على الجوال */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: flex-start;
+        }
+
+        html[dir="rtl"] .skills-container {
+            justify-content: flex-start;
+        }
+
+        .skill-badge {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            color: #d1d1d1;
+            transition: all 0.3s ease;
+            text-align: center;
+            display: inline-block;
+        }
+
+        .skill-badge:hover {
+            border-color: #d4af37;
+            color: #ffffff;
+            background: rgba(212, 175, 55, 0.08);
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.25);
+        }
+
+        /* Fully Redesigned Luxury Career & Partnership Section */
+        .career-partnership-section {
+            margin: 120px 0;
+            position: relative;
+            padding: 40px 0;
+            background: radial-gradient(circle at center, rgba(212, 175, 55, 0.03) 0%, transparent 70%);
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .career-partnership-section .section-title {
+            text-align: center;
+            border: none;
+            padding: 0;
+            margin-bottom: 30px;
+            font-size: 2rem;
+            letter-spacing: -0.5px;
+        }
+
+        .luxury-carousel-wrapper {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            cursor: grab;
+            padding: 20px 0;
+            user-select: none;
+        }
+
+        .luxury-carousel-wrapper:active {
+            cursor: grabbing;
+        }
+
+        .luxury-carousel-track {
+            display: flex;
+            gap: 30px;
+            width: max-content;
+            animation: luxuryMarquee 50s linear infinite;
+            will-change: transform;
+        }
+
+        .luxury-carousel-track:hover {
+            animation-play-state: paused;
+        }
+
+        /* Glass Cards for Career & Partnership */
+        .luxury-glass-card {
+            width: 240px;
+            height: 150px;
+            background: #FFFFFF;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            position: relative;
+            flex-shrink: 0;
+            overflow: hidden;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                        border-color 0.4s ease, 
+                        background 0.4s ease, 
+                        box-shadow 0.4s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            animation: subtleCardFloat 6s ease-in-out infinite;
+        }
+
+        .luxury-glass-card:nth-child(odd) {
+            animation-delay: -3s;
+        }
+
+        .luxury-glass-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 20px;
+            background: radial-gradient(circle at center, rgba(212, 175, 55, 0.15) 0%, transparent 75%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+        }
+
+        .luxury-glass-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: rgba(212, 175, 55, 0.6);
+            background: #FFFFFF;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(212, 175, 55, 0.25);
+        }
+
+        .luxury-glass-card:hover::before {
+            opacity: 1;
+        }
+
+        .luxury-glass-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            opacity: 1;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            display: block;
+        }
+
+        .luxury-glass-card:hover img {
+            transform: scale(1.08);
+        }
+
+        @keyframes luxuryMarquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-240px * 12 - 30px * 12)); }
+        }
+
+        @keyframes luxuryMarqueeMobile {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-200px * 12 - 20px * 12)); }
+        }
+
+        @keyframes subtleCardFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-3px); }
+        }
+
+        .volunteer-section {
+            margin: 100px 0;
+        }
+
+        .volunteer-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            padding: 30px;
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+
+        html[dir="rtl"] .volunteer-card {
+            text-align: right;
+        }
+
+        .volunteer-logo {
+            width: 90px;
+            height: 90px;
+            border-radius: 12px;
+            overflow: hidden;
+            flex-shrink: 0;
+            background: #111;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .volunteer-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .volunteer-info h3 {
+            font-size: 1.25rem;
+            color: #ffffff;
+            margin-bottom: 4px;
+        }
+
+        .volunteer-info .vol-date {
+            font-size: 0.9rem;
+            color: #d4af37;
+            margin-bottom: 12px;
+        }
+
+        .volunteer-info p {
+            color: #b0b0b0;
+            font-size: 0.95rem;
+        }
+
+        /* Contact Section with Golden Icons */
+        .contact-section {
+            margin: 120px 0 80px 0;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            padding-top: 80px;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-top: 35px;
+        }
+
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .contact-item i {
+            font-size: 1.5rem;
+            color: #d4af37;
+            background: rgba(212, 175, 55, 0.1);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .contact-item i:hover {
+            background: rgba(212, 175, 55, 0.2);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .contact-link {
+            color: #cccccc;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 400;
+            position: relative;
+            padding-bottom: 4px;
+            transition: color 0.3s ease;
+        }
+
+        .contact-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: #d4af37;
+            transition: width 0.3s ease;
+        }
+
+        .contact-link:hover {
+            color: #ffffff;
+        }
+
+        .contact-link:hover::after {
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .hero-banner { height: 50vh; min-height: 350px; }
+            .hero-title-area h1 { font-size: 2.3rem; }
+            .volunteer-card { flex-direction: column; text-align: center; }
+            .contact-links { flex-direction: column; gap: 30px; }
+            .luxury-carousel-track { animation: luxuryMarqueeMobile 45s linear infinite; }
+            .side-menu { width: 260px; }
+            .luxury-glass-card {
+                width: 200px;
+                height: 130px;
+                padding: 0;
+                border-radius: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Canvas Animated Background -->
+    <canvas id="bgCanvas"></canvas>
+
+    <!-- Top Controls (Menu & Language) -->
+    <div class="top-controls">
+        <button class="control-btn" id="langToggleBtn" onclick="toggleLanguage()">AR</button>
+        <button class="control-btn" id="menuToggleBtn" onclick="toggleSideMenu()">☰ Menu</button>
+    </div>
+
+    <!-- Side Menu Overlay -->
+    <div class="menu-overlay" id="menuOverlay" onclick="toggleSideMenu()"></div>
+
+    <!-- Side Menu (Left Side) -->
+    <nav class="side-menu" id="sideMenu">
+        <ul>
+            <li><a href="#about" onclick="toggleSideMenu()" data-en="About Me" data-ar="نبذة عني">About Me</a></li>
+            <li><a href="#experience" onclick="toggleSideMenu()" data-en="Professional Experience" data-ar="الخبرة المهنية">Professional Experience</a></li>
+            <li><a href="#skills" onclick="toggleSideMenu()" data-en="Technical Skills & Core" data-ar="المهارات التقنية والأساسية">Technical Skills & Core</a></li>
+            <li><a href="#career-partnership" onclick="toggleSideMenu()" data-en="Clients & Partnerships" data-ar="العملاء والشركاء">Clients & Partnerships</a></li>
+            <li><a href="#volunteer" onclick="toggleSideMenu()" data-en="Volunteer Work" data-ar="العمل التطوعي">Volunteer Work</a></li>
+            <li><a href="#contact" onclick="toggleSideMenu()" data-en="Get in Touch (Contact)" data-ar="تواصل معي">Get in Touch (Contact)</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero-banner">
+        <div class="profile-slideshow-container" id="profileSlideshow">
+            <div class="profile-slide active">
+                <img src="profile.jpg" alt="Abdullah Al-Shahri">
+            </div>
+            <div class="profile-slide">
+                <img src="profile2.jpg" alt="Abdullah Al-Shahri">
+            </div>
+        </div>
+    </header>
+
+    <div class="hero-title-area">
+        <h1 data-en="Abdullah Al-Shahri" data-ar="عبدالله الشهري">Abdullah Al-Shahri</h1>
+        <p class="title-role" data-en="Operations & Business Development Professional" data-ar="أخصائي العمليات وتطوير الأعمال">Operations & Business Development Professional</p>
+    </div>
+
+    <div class="container">
+
+        <section class="about-section" id="about">
+            <h2 class="section-title" data-en="About Me" data-ar="نبذة عني">About Me</h2>
+            <div class="section-bio">
+                <p data-en="Operations and Business Development professional with over 10 years of experience in hospitality customer service marketing and project management. Experienced in operations management hospitality operations procurement supplier management contract administration process improvement marketing support and team leadership. Skilled in establishing business operations building strategic relationships improving operational efficiency supporting business growth and enhancing customer experience while maintaining high service standards." data-ar="أخصائي عمليات وتطوير أعمال بخبرة تمتد لأكثر من 10 سنوات في قطاعات الضيافة خدمة العملاء التسويق وإدارة المشاريع. خبير في إدارة العمليات إدارة عمليات الضيافة المشتريات إدارة الموردين إدارة العقود تحسين العمليات دعم التسويق وقيادة الفرق. مهارات عالية في تأسيس العمليات التجارية بناء العلاقات الاستراتيجية رفع الكفاءة التشغيلية دعم نمو الأعمال وتحسين تجربة العملاء مع الحفاظ على أعلى معايير الجودة.">Operations and Business Development professional with over 10 years of experience in hospitality customer service marketing and project management. Experienced in operations management hospitality operations procurement supplier management contract administration process improvement marketing support and team leadership. Skilled in establishing business operations building strategic relationships improving operational efficiency supporting business growth and enhancing customer experience while maintaining high service standards.</p>
+            </div>
+        </section>
+
+        <section class="timeline-section" id="experience">
+            <h2 class="section-title" data-en="Professional Experience" data-ar="الخبرة المهنية">Professional Experience</h2>
+            <div class="timeline">
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3 data-en="Operations & Business Development Manager" data-ar="مدير العمليات وتطوير الأعمال">Operations & Business Development Manager</h3>
+                        <div class="company-date" data-en="Private Organization | 2023 - Present" data-ar="منظمة خاصة | 2023 - حتى الآن">Private Organization | 2023 - Present</div>
+                        <ul>
+                            <li data-en="Led the establishment of business operations by developing operational procedures workflows and administrative processes." data-ar="قيادة تأسيس العمليات التجارية من خلال تطوير الإجراءات التشغيلية مسارات العمل والعمليات الإدارية.">Led the establishment of business operations by developing operational procedures workflows and administrative processes.</li>
+                            <li data-en="Built relationships with investors and strategic partners to support business growth and expansion." data-ar="بناء علاقات مع المستثمرين والشركاء الاستراتيجيين لدعم نمو وتوسع الأعمال.">Built relationships with investors and strategic partners to support business growth and expansion.</li>
+                            <li data-en="Successfully generated over SAR 2 million in sales during 2023 while operating the business with a team of fewer than 8 employees." data-ar="تحقيق مبيعات تجاوزت 2 مليون ريال سعودي خلال عام 2023 مع تشغيل المشروع بفريق يقل عن 8 موظفين.">Successfully generated over SAR 2 million in sales during 2023 while operating the business with a team of fewer than 8 employees.</li>
+                            <li data-en="Increased annual sales to over SAR 4 million in 2024 by retaining existing clients expanding customer relationships and securing new business opportunities." data-ar="زيادة المبيعات السنوية لأكثر من 4 مليون ريال سعودي في 2024 عبر الاحتفاظ بالعملاء الحاليين توسيع علاقات العملاء وتأمين فرص تجارية جديدة.">Increased annual sales to over SAR 4 million in 2024 by retaining existing clients expanding customer relationships and securing new business opportunities.</li>
+                            <li data-en="Led the launch and operational setup of a new restaurant in 2026 overseeing planning execution and operational readiness." data-ar="قيادة إطلاق والتجهيز التشغيلي لمطعم جديد في 2026 والإشراف على التخطيط والتنفيذ والجاهزية التشغيلية.">Led the launch and operational setup of a new restaurant in 2026 overseeing planning execution and operational readiness.</li>
+                            <li data-en="Managed procurement supplier management purchasing activities contract administration and operational cost control." data-ar="إدارة المشتريات إدارة الموردين أنشطة الشراء إدارة العقود والتحكم بالتكلفة التشغيلية.">Managed procurement supplier management purchasing activities contract administration and operational cost control.</li>
+                            <li data-en="Recruited trained and supervised employees while leading daily operations team performance and process improvements." data-ar="استقطاب تدريب والإشراف على الموظفين مع قيادة العمليات اليومية أداء الفريق وتحسين العمليات.">Recruited trained and supervised employees while leading daily operations team performance and process improvements.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3 data-en="Marketing Officer & Projects Supervisor" data-ar="مسؤول تسويق ومشرف مشاريع">Marketing Officer & Projects Supervisor</h3>
+                        <div class="company-date" data-en="Zabarjad | Jun 2018 - Sep 2022" data-ar="زبرجد | يونيو 2018 - سبتمبر 2022">Zabarjad | Jun 2018 - Sep 2022</div>
+                        <ul>
+                            <li data-en="Secured new business opportunities through client acquisition and commercial negotiations." data-ar="تأمين فرص تجارية جديدة من خلال استقطاب العملاء وإجراء المفاوضات التجارية.">Secured new business opportunities through client acquisition and commercial negotiations.</li>
+                            <li data-en="Managed catering and hospitality projects from contract award through successful execution." data-ar="إدارة مشاريع الإعاشة والضيافة من مرحلة ترسية العقد وحتى التنفيذ الناجح.">Managed catering and hospitality projects from contract award through successful execution.</li>
+                            <li data-en="Planned and executed marketing initiatives establishing and leading a digital marketing team that secured 6 commercial contracts for multiple clients." data-ar="تخطيط وتنفيذ المبادرات التسويقية وتأسيس وقيادة فريق تسويق رقمي نجح في تأمين 6 عقود تجارية لعدة عملاء.">Planned and executed marketing initiatives establishing and leading a digital marketing team that secured 6 commercial contracts for multiple clients.</li>
+                            <li data-en="Oversaw procurement budgeting supplier management and operational cost control." data-ar="الإشراف على المشتريات إعداد الميزانيات إدارة الموردين والتحكم بالتكاليف التشغيلية.">Oversaw procurement budgeting supplier management and operational cost control.</li>
+                            <li data-en="Managed recruitment onboarding attendance tracking payroll coordination and performance monitoring." data-ar="إدارة التوظيف التهيئة متابعة الحضور تنسيق الرواتب ومراقبة الأداء.">Managed recruitment onboarding attendance tracking payroll coordination and performance monitoring.</li>
+                            <li data-en="Restructured the workforce to improve operational efficiency while maintaining service quality and supporting continued sales growth." data-ar="إعادة هيكلة القوى العاملة لتحسين الكفاءة التشغيلية مع الحفاظ على جودة الخدمة ودعم استمرار نمو المبيعات.">Restructured the workforce to improve operational efficiency while maintaining service quality and supporting continued sales growth.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3 data-en="Customer Service Representative" data-ar="ممثل خدمة عملاء">Customer Service Representative</h3>
+                        <div class="company-date" data-en="Al Zamil Maintenance Company | 2015" data-ar="شركة الزامل للصيانة | 2015">Al Zamil Maintenance Company | 2015</div>
+                        <ul>
+                            <li data-en="Handled customer inquiries requests and complaints professionally." data-ar="التعامل مع استفسارات طلبات وشكاوي العملاء باحترافية عالية.">Handled customer inquiries requests and complaints professionally.</li>
+                            <li data-en="Coordinated with operational teams to ensure timely service delivery and high customer satisfaction." data-ar="التنسيق مع فرق العمليات لضمان تقديم الخدمة في الوقت المناسب وتحقيق أعلى رضا للعملاء.">Coordinated with operational teams to ensure timely service delivery and high customer satisfaction.</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="skills-section" id="skills">
+            <h2 class="section-title" data-en="Technical Skills & Core" data-ar="المهارات التقنية والأساسية">Technical Skills & Core</h2>
+            <div class="skills-container">
+                <span class="skill-badge" data-en="Operations Management" data-ar="إدارة العمليات">Operations Management</span>
+                <span class="skill-badge" data-en="Hospitality Operations" data-ar="إدارة عمليات الضيافة">Hospitality Operations</span>
+                <span class="skill-badge" data-en="Business Development" data-ar="تطوير الأعمال">Business Development</span>
+                <span class="skill-badge" data-en="Project Management" data-ar="إدارة المشاريع">Project Management</span>
+                <span class="skill-badge" data-en="Procurement" data-ar="المشتريات">Procurement</span>
+                <span class="skill-badge" data-en="Supplier Management" data-ar="إدارة الموردين">Supplier Management</span>
+                <span class="skill-badge" data-en="Contract Management" data-ar="إدارة العقود">Contract Management</span>
+                <span class="skill-badge" data-en="Budget & Cost Control" data-ar="إدارة الميزانية والتحكم بالتكاليف">Budget & Cost Control</span>
+                <span class="skill-badge" data-en="Process Improvement" data-ar="تحسين العمليات">Process Improvement</span>
+                <span class="skill-badge" data-en="Commercial Negotiation" data-ar="المفاوضات التجارية">Commercial Negotiation</span>
+                <span class="skill-badge" data-en="Stakeholder Management" data-ar="إدارة أصحاب المصلحة">Stakeholder Management</span>
+                <span class="skill-badge" data-en="Team Leadership" data-ar="قيادة فرق العمل">Team Leadership</span>
+                <span class="skill-badge" data-en="Advanced Microsoft Excel" data-ar="مايكروسوفت إكسل المتقدم">Advanced Microsoft Excel</span>
+                <span class="skill-badge" data-en="Data Analysis & Reporting" data-ar="تحليل البيانات وإعداد التقارير">Data Analysis & Reporting</span>
+                <span class="skill-badge" data-en="Adobe Creative Cloud" data-ar="حزمة أدوبي الإبداعية">Adobe Creative Cloud</span>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Completely Redesigned Luxury Career & Partnership Section -->
+    <section class="career-partnership-section" id="career-partnership">
+        <div class="container" style="padding: 0;">
+            <h2 class="section-title" data-en="Clients & Partnerships" data-ar="العملاء والشركاء">Clients & Partnerships</h2>
+        </div>
+        <div class="luxury-carousel-wrapper" id="luxuryCarouselWrapper">
+            <div class="luxury-carousel-track" id="luxuryCarouselTrack">
+                <div class="luxury-glass-card"><img src="client1.PNG" alt="Client 1"></div>
+                <div class="luxury-glass-card"><img src="client2.PNG" alt="Client 2"></div>
+                <div class="luxury-glass-card"><img src="client3.PNG" alt="Client 3"></div>
+                <div class="luxury-glass-card"><img src="client4.PNG" alt="Client 4"></div>
+                <div class="luxury-glass-card"><img src="client5.PNG" alt="Client 5"></div>
+                <div class="luxury-glass-card"><img src="client6.PNG" alt="Client 6"></div>
+                <div class="luxury-glass-card"><img src="client7.PNG" alt="Client 7"></div>
+                <div class="luxury-glass-card"><img src="client8.PNG" alt="Client 8"></div>
+                <div class="luxury-glass-card"><img src="client9.PNG" alt="Client 9"></div>
+                <div class="luxury-glass-card"><img src="client10.PNG" alt="Client 10"></div>
+                <div class="luxury-glass-card"><img src="client11.PNG" alt="Client 11"></div>
+                <div class="luxury-glass-card"><img src="client12.PNG" alt="Client 12"></div>
+                <!-- Duplicated for seamless infinite carousel loop -->
+                <div class="luxury-glass-card"><img src="client1.PNG" alt="Client 1"></div>
+                <div class="luxury-glass-card"><img src="client2.PNG" alt="Client 2"></div>
+                <div class="luxury-glass-card"><img src="client3.PNG" alt="Client 3"></div>
+                <div class="luxury-glass-card"><img src="client4.PNG" alt="Client 4"></div>
+                <div class="luxury-glass-card"><img src="client5.PNG" alt="Client 5"></div>
+                <div class="luxury-glass-card"><img src="client6.PNG" alt="Client 6"></div>
+                <div class="luxury-glass-card"><img src="client7.PNG" alt="Client 7"></div>
+                <div class="luxury-glass-card"><img src="client8.PNG" alt="Client 8"></div>
+                <div class="luxury-glass-card"><img src="client9.PNG" alt="Client 9"></div>
+                <div class="luxury-glass-card"><img src="client10.PNG" alt="Client 10"></div>
+                <div class="luxury-glass-card"><img src="client11.PNG" alt="Client 11"></div>
+                <div class="luxury-glass-card"><img src="client12.PNG" alt="Client 12"></div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <section class="volunteer-section" id="volunteer">
+            <h2 class="section-title" data-en="Volunteer Work" data-ar="العمل التطوعي">Volunteer Work</h2>
+            <div class="volunteer-card">
+                <div class="volunteer-logo">
+                    <img src="volunteer.jpg" alt="SEEN Endowment">
+                </div>
+                <div class="volunteer-info">
+                    <h3 data-en="SEEN Endowment" data-ar="وقف سين">SEEN Endowment</h3>
+                    <div class="vol-date" data-en="Jan 1 2019 – Feb 3 2021" data-ar="1 يناير 2019 – 3 فبراير 2021">Jan 1 2019 – Feb 3 2021</div>
+                    <p data-en="Contributed to graphic design marketing campaigns and content creation to support the team’s goals and increase audience engagement." data-ar="المساهمة في الحملات التسويقية للتصميم الجرافيكي وإنشاء المحتوى لدعم أهداف الفريق وزيادة تفاعل الجمهور.">Contributed to graphic design marketing campaigns and content creation to support the team’s goals and increase audience engagement.</p>
+                </div>
+            </div>
+        </section>
+
+        <footer class="contact-section" id="contact">
+            <h2 class="section-title" style="border: none; text-align: center; padding: 0;" data-en="Get in Touch" data-ar="تواصل معي">Get in Touch</h2>
+            <div class="contact-links">
+                <div class="contact-item">
+                    <i class="fa-solid fa-phone"></i>
+                    <a href="tel:+966530586021" class="contact-link">+966 53 058 6021</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fa-solid fa-envelope"></i>
+                    <a href="mailto:alialsh95@proton.me" class="contact-link">alialsh95@proton.me</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                    <a href="https://linkedin.com/in/alialsh95" target="_blank" class="contact-link">linkedin.com/in/alialsh95</a>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+    <script>
+        // Canvas Animated Background (Smooth Waves & Particles)
+        const canvas = document.getElementById('bgCanvas');
+        const ctx = canvas.getContext('2d');
+
+        let width, height;
+        function resizeCanvas() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        // Particles setup
+        const particles = [];
+        const particleCount = 45;
+        for (let i = 0; i < particleCount; i++) {
+            particles.push({
+                x: Math.random() * width,
+                y: Math.random() * height,
+                radius: Math.random() * 1.5 + 0.5,
+                color: Math.random() > 0.3 ? 'rgba(212, 175, 55, 0.35)' : 'rgba(255, 255, 255, 0.2)',
+                vx: (Math.random() - 0.5) * 0.2,
+                vy: (Math.random() - 0.5) * 0.2
+            });
+        }
+
+        let step = 0;
+        function animateBg() {
+            ctx.fillStyle = '#030303';
+            ctx.fillRect(0, 0, width, height);
+
+            // Draw subtle glowing gradient waves
+            step += 0.008;
+            ctx.save();
+            ctx.globalCompositeOperation = 'screen';
+
+            const grad1 = ctx.createRadialGradient(
+                width * 0.2 + Math.sin(step) * 100, height * 0.3 + Math.cos(step * 0.8) * 80, 50,
+                width * 0.2, height * 0.3, width * 0.7
+            );
+            grad1.addColorStop(0, 'rgba(212, 175, 55, 0.06)');
+            grad1.addColorStop(1, 'transparent');
+            ctx.fillStyle = grad1;
+            ctx.fillRect(0, 0, width, height);
+
+            const grad2 = ctx.createRadialGradient(
+                width * 0.8 - Math.cos(step * 0.7) * 120, height * 0.7 + Math.sin(step * 0.9) * 90, 50,
+                width * 0.8, height * 0.7, width * 0.8
+            );
+            grad2.addColorStop(0, 'rgba(180, 140, 40, 0.04)');
+            grad2.addColorStop(1, 'transparent');
+            ctx.fillStyle = grad2;
+            ctx.fillRect(0, 0, width, height);
+
+            ctx.restore();
+
+            // Update and draw tiny particles
+            particles.forEach(p => {
+                p.x += p.vx;
+                p.y += p.vy;
+
+                if (p.x < 0) p.x = width;
+                if (p.x > width) p.x = 0;
+                if (p.y < 0) p.y = height;
+                if (p.y > height) p.y = 0;
+
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                ctx.fillStyle = p.color;
+                ctx.fill();
+            });
+
+            requestAnimationFrame(animateBg);
+        }
+        animateBg();
+
+        // Profile Images Slideshow Autoplay Logic
+        const slides = document.querySelectorAll('.profile-slide');
+        let currentSlide = 0;
+        function nextProfileSlide() {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+        if (slides.length > 1) {
+            setInterval(nextProfileSlide, 5000);
+        }
+
+        // Side Menu Toggle Functionality
+        function toggleSideMenu() {
+            const sideMenu = document.getElementById('sideMenu');
+            const menuOverlay = document.getElementById('menuOverlay');
+            sideMenu.classList.toggle('open');
+            menuOverlay.classList.toggle('active');
+        }
+
+        // Language Toggle Functionality (English <-> Arabic RTL)
+        function toggleLanguage() {
+            const htmlRoot = document.getElementById('htmlRoot');
+            const langBtn = document.getElementById('langToggleBtn');
+            const currentLang = htmlRoot.getAttribute('lang');
+
+            if (currentLang === 'en') {
+                htmlRoot.setAttribute('lang', 'ar');
+                htmlRoot.setAttribute('dir', 'rtl');
+                langBtn.innerText = 'EN';
+            } else {
+                htmlRoot.setAttribute('lang', 'en');
+                htmlRoot.setAttribute('dir', 'ltr');
+                langBtn.innerText = 'AR';
+            }
+
+            // Translate all elements with data-en and data-ar attributes
+            const translateElements = document.querySelectorAll('[data-en][data-ar]');
+            translateElements.forEach(el => {
+                if (htmlRoot.getAttribute('lang') === 'ar') {
+                    el.innerText = el.getAttribute('data-ar');
+                } else {
+                    el.innerText = el.getAttribute('data-en');
+                }
+            });
+        }
+
+        // Professional Ultra-Smooth Drag / Touch Swipe Luxury Carousel Interactivity
+        const carouselWrapper = document.getElementById('luxuryCarouselWrapper');
+        const carouselTrack = document.getElementById('luxuryCarouselTrack');
+        
+        let isDragging = false;
+        let startPosX = 0;
+
+        function getPositionX(event) {
+            return event.type.includes('mouse') ? event.pageX : event.touches[0].clientX;
+        }
+
+        function touchStart(event) {
+            isDragging = true;
+            startPosX = getPositionX(event);
+            carouselTrack.style.animationPlayState = 'paused';
+        }
+
+        function touchMove(event) {
+            if (!isDragging) return;
+            const currentPosition = getPositionX(event);
+            const diff = currentPosition - startPosX;
+            carouselWrapper.scrollLeft -= diff;
+            startPosX = currentPosition;
+        }
+
+        function touchEnd() {
+            if (!isDragging) return;
+            isDragging = false;
+            carouselTrack.style.animationPlayState = 'running';
+        }
+
+        // Mouse Events
+        carouselWrapper.addEventListener('mousedown', touchStart);
+        carouselWrapper.addEventListener('mousemove', touchMove);
+        carouselWrapper.addEventListener('mouseup', touchEnd);
+        carouselWrapper.addEventListener('mouseleave', touchEnd);
+
+        // Touch Events for Mobile
+        carouselWrapper.addEventListener('touchstart', touchStart, { passive: true });
+        carouselWrapper.addEventListener('touchmove', touchMove, { passive: true });
+        carouselWrapper.addEventListener('touchend', touchEnd);
+    </script>
+</body>
+</html>
 
